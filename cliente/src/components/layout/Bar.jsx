@@ -13,6 +13,7 @@ const Bar = () => {
   useEffect(() => {
     /* Verify the authentication every time the page reloads */
     userAuthenticated()
+    // eslint-disable-next-line
   }, [])
 
   return (

@@ -24,7 +24,9 @@ const Login = (props) => {
     /* Check if there are authentication errors, if there are, it show them */
     if(msg) {
       showAlert(msg.msg, msg.category)
+      
     }
+    // eslint-disable-next-line
   }, [authenticated, msg, props.history])
 
   /* Local State */

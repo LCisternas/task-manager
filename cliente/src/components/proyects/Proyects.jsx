@@ -17,6 +17,7 @@ const Proyects = () => {
   /* Verify authenticated every time page reload */
   useEffect(() => {
     userAuthenticated();
+    // eslint-disable-next-line
   }, [])
 
   return (

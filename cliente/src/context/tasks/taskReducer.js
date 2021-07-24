@@ -1,18 +1,18 @@
 /* Here I set all the functionalities of the functions of the TaskState */
-import { TASKS_PROYECTS ,ADD_TASK, VALID_FORM, DELETE_TASK, UPDATE_STATE, ACTUAL_TASK, UPDATE_TASK } from '../../types'
+import { TASKS_PROYECTS ,ADD_TASK, VALID_FORM, DELETE_TASK, ACTUAL_TASK, UPDATE_TASK } from '../../types'
 
 const taskReducer = (state, action) => {
   switch(action.type) {
     case TASKS_PROYECTS :
       return {
         ...state,
-        tasksProyect: state.tasks.filter(task => task.proyectId === action.payload),
+        tasksProyect: action.payload,
         activeTask: null
       }
     case ADD_TASK :
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasksProyect: [...state.tasksProyect, action.payload],
         taskerror: false
       }
     case VALID_FORM :
@@ -23,13 +23,7 @@ const taskReducer = (state, action) => {
     case DELETE_TASK :
       return {
         ...state,
-        tasks: state.tasks.filter(task => task.id !== action.payload)
-      }
-    case UPDATE_STATE :
-      return {
-        ...state,
-        tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task),
-        activeTask: null
+        tasksProyect: state.tasksProyect.filter(task => task._id !== action.payload)
       }
     case ACTUAL_TASK :
       return {
@@ -39,7 +33,7 @@ const taskReducer = (state, action) => {
     case UPDATE_TASK :
       return {
         ...state,
-        tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task),
+        tasksProyect: state.tasksProyect.map(task => task._id === action.payload._id ? action.payload : task),
         activeTask: null
       }            
     default : 

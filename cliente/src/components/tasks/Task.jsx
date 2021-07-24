@@ -8,14 +8,15 @@ const Task = ({ task }) => {
 
   /* Use Context TaskState */
   const tasksContext = useContext(taskContext)
-  const { deleteTask, getTasksByProyect, updateState, actualTask } = tasksContext
+  const { deleteTask, getTasksByProyect, updateTask, actualTask } = tasksContext
   /* Use Context ProyectState */
   const proyectsContext = useContext(proyectContext)
   const { proyect } = proyectsContext
+  const [actualProyect] = proyect
   /* Function onClick Event */
   const onClickDelete = (id) => {
-    deleteTask(id)
-    getTasksByProyect(proyect[0].id)
+    deleteTask(id, actualProyect._id)
+    getTasksByProyect(proyect[0])
   }
   /* Function onClick Event */
   const onClickUpdateState = (task) => {
@@ -24,7 +25,7 @@ const Task = ({ task }) => {
     } else {
       task.state = true
     }
-    updateState(task)
+    updateTask(task)
   }
   /* Function it take a task to update it */ 
   const selectTask = (task) => {
@@ -62,7 +63,7 @@ const Task = ({ task }) => {
         <button
           type='button'
           className='btn btn-secundario'
-          onClick={() => onClickDelete(task.id)}
+          onClick={() => onClickDelete(task._id)}
         >Delete</button>
       </div>
     </li>

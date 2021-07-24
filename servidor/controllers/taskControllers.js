@@ -35,7 +35,7 @@ const newTask = async (req, res) => {
 /* Function that get all tasks by proyect */
 const getTaskByProyect = async (req, res) => {
   try {
-    const { proyect } = req.body;
+    const { proyect } = req.query;
     const oneProyect = await Proyect.findById(proyect)
     /* Validation */
     if(!oneProyect) {
@@ -69,10 +69,8 @@ const updateTask = async (req, res) => {
       return res.status(401).json({ msg: 'Permission Denied' })
     }
     const newTask = {};
-    /* If is true, execute */
-    if(name) newTask.name = name;
-    /* If is true, execute */
-    if(state) newTask.state = state;    
+    newTask.name = name;
+    newTask.state = state;    
     /* ¡¡¡UPDATE!!! */
     oneTask = await Task.findOneAndUpdate(
       { _id: req.params.id },
@@ -90,7 +88,7 @@ const updateTask = async (req, res) => {
 /* Function that delete task */
 const deleteTask = async (req, res) => {
   try {
-    const { proyect } = req.body
+    const { proyect } = req.query
     let oneTask = await Task.findById(req.params.id)
     /* Validation */
     if(!oneTask) {

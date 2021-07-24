@@ -3,7 +3,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import proyectContext from '../../context/proyects/proyectContext';
 import taskContext from '../../context/tasks/taskContext';
-import { nanoid } from 'nanoid';
 /* Component */
 const FormTask = () => {
 
@@ -47,15 +46,14 @@ const FormTask = () => {
     }
     /* Simple Validation to add and not edit */
     if(activeTask === null) {
-      task.proyectId = proyect[0].id
-      task.id = nanoid()
+      task.proyect = proyect[0]._id
       addTask(task)
     } else {
       /* If is not null then edit */
       updateTask(task)
     }
     /* Show in the task inmediately */
-    getTasksByProyect(task.proyectId)
+    getTasksByProyect(task.proyect)
     /* Reset Form */
     setTask({
       name: '', state: false
