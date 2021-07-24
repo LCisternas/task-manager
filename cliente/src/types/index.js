@@ -1,0 +1,23 @@
+export const FORM_PROYECT = 'FORM_PROYECT';
+export const GET_PROYECTS = 'GET_PROYECTS';
+export const ADD_PROYECTS = 'ADD_PROYECTSS';
+export const VALID_FORM = 'VALID_FORM';
+export const ACTUAL_PROYECT = 'ACTUAL_PROYECT';
+export const DELETE_PROYECT = 'DELETE_PROYECT';
+
+export const TASKS_PROYECTS = 'TASKS_PROYECTS';
+export const ADD_TASK = 'ADD_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
+export const UPDATE_STATE = 'UPDATE_STATE';
+export const ACTUAL_TASK = 'ACTUAL_TASK'; 
+export const UPDATE_TASK = 'UPDATE_TASK';
+
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const HIDDEN_ALERT = 'HIDDEN_ALERT';
+
+export const SUCCESSFUL_REGISTRATION = 'SUCCESSFUL_REGISTRATION';
+export const ERROR_REGISTRATION = 'ERROR_REGISTRATION';
+export const GET_USER = 'GET_USER';
+export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN';
+export const ERROR_LOGIN = 'ERROR_LOGIN';
+export const LOG_OUT = 'LOG_OUT';
