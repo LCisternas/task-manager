@@ -13,7 +13,7 @@ const ListProyects = () => {
   useEffect(() => {
     getProyects();
     //eslint-disable-next-line
-  }, [])
+  }, [proyects])
 
   /* Simple Validation */
   if(proyects.length === 0) {
@@ -24,7 +24,7 @@ const ListProyects = () => {
     <ul className='listado-proyectos'>
       {proyects.map(proyect => (
         <Proyect 
-          key={proyect.id}
+          key={proyect._id}
           proyect={proyect}
         />
       ))}      

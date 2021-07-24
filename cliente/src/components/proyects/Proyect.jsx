@@ -23,7 +23,7 @@ const Proyect = ({ proyect }) => {
       <button
         type='button'
         className='btn btn-blank'
-        onClick={() => onClickProyect(proyect.id)}
+        onClick={() => onClickProyect(proyect._id)}
       > {proyect.name} </button>
     </li>
   );

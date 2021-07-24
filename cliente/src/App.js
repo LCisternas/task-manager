@@ -12,7 +12,6 @@ import TaskState from './context/tasks/taskState';
 import AlertState from './context/alerts/alertState';
 import AuthState from './context/auth/authState';
 import tokenAuth from './config/tokenAuth';
-
 /* Check token */
 const token = localStorage.getItem('token');
 if(token) {

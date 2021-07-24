@@ -4,17 +4,10 @@ import React, { useReducer } from 'react';
 import proyectContext from './proyectContext';
 import proyectReducer from './proyectReducer';
 import { FORM_PROYECT, GET_PROYECTS, ADD_PROYECTS, VALID_FORM, ACTUAL_PROYECT, DELETE_PROYECT } from '../../types/index'
-import { nanoid } from 'nanoid'
+import axiosClient from '../../config/axios';
 
 /* Component with initial status for new proyects */
 const ProyectState = props => {
-
-  const proyects = [
-    { id: 1 ,name: 'ecommerce' },
-    { id: 2, name: 'Intranet' },
-    { id: 3, name: 'Website Design' },
-    { id: 4, name: 'TEST' }
-  ]
 
   /* Initial State always is a Object */
   const initialState = {
@@ -33,18 +26,30 @@ const ProyectState = props => {
       type: FORM_PROYECT
     })
   }
-  const getProyects = () => {
-    dispatch({
-      type: GET_PROYECTS,
-      payload: proyects
-    })
+  const getProyects = async () => {
+    try {
+      const result = await axiosClient.get('/api/proyects')
+      dispatch({
+        type: GET_PROYECTS,
+        payload: result.data.proyects
+      })
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
-  const addProyects = proyect => {
-    proyect.id = nanoid()
-    dispatch({
-      type: ADD_PROYECTS,
-      payload: proyect
-    })
+  const addProyects = async proyect => {
+    try {
+      const result = await axiosClient.post('/api/proyects', proyect);
+      console.log(result)
+      dispatch({
+        type: ADD_PROYECTS,
+        payload: result.data
+      })
+    } 
+    catch (error) {
+      console.log(error)  
+    }
   }
   const validForm = () => {
     dispatch({
@@ -57,11 +62,17 @@ const ProyectState = props => {
       payload: proyectId
     })
   }
-  const deleteProyect = proyect => {
-    dispatch({
-      type: DELETE_PROYECT,
-      payload: proyect
-    })
+  const deleteProyect = async proyectId => {
+    try {
+      const result = await axiosClient.delete(`/api/proyects/${proyectId}`)
+      dispatch({
+        type: DELETE_PROYECT,
+        payload: result.data
+      })
+    } 
+    catch (error) {
+      console.log(error)
+    }
   } 
 
   return (

@@ -9,6 +9,7 @@ const proyectReducer = (state, action) => {
         form: true
       }
     case GET_PROYECTS :
+      // console.log(action.payload)
       return {
         ...state,
         proyects: action.payload
@@ -18,7 +19,7 @@ const proyectReducer = (state, action) => {
         ...state,
         proyects: [...state.proyects, action.payload],
         form: false,
-        errorForm: false
+        errorForm: false,
       }
     case VALID_FORM :
       return {
@@ -28,12 +29,13 @@ const proyectReducer = (state, action) => {
     case ACTUAL_PROYECT :
       return {
         ...state,
-        proyect: state.proyects.filter(proyect => proyect.id === action.payload)
+        proyect: state.proyects.filter(proyect => proyect._id === action.payload)
       }
     case DELETE_PROYECT :
+      console.log(action.payload)
       return {
         ...state,
-        proyects: state.proyects.filter(proyect => proyect.id !== action.payload.id),
+        proyects: state.proyects.filter(proyect => proyect._id !== action.payload),
         proyect: null
       }          
     default: 

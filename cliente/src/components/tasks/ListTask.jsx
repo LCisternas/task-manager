@@ -36,7 +36,7 @@ const ListTask = () => {
         <button
         type='button'
         className='btn btn-primario'
-        onClick={() => deleteProyect(proyect[0])}
+        onClick={() => deleteProyect(proyect[0]._id)}
       > Delete Proyect &times; </button>
       </ul>
     </Fragment>
